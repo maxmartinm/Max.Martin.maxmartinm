@@ -1,0 +1,68 @@
+E1: Git Research
+
+1. What does the git init command do?
+
+	It creates an empty Git repository or reinitializes an already existing one.
+	
+2. What does git add do? How is it different from git commit?
+
+	The git add comand adds all exisitng files to the index.
+
+3. What is the difference between staged and committed (or versioned) 
+files?
+
+	Staged is in intermediate stage for files before the changes being committed. 
+
+4. What's the shortcut for adding all files and commiting them?
+
+	git commit -a	
+
+5. How do you unstage a staged file? How do you go back to an old version of a committed file?
+
+	git commit -m "initial commit"
+	git add file
+	git commit --ammend
+
+6. Why are commit messages very important?
+
+	Commit messages are very important in order to keep track of changes made to files.
+
+7. How do I revert to a previous commit (i.e. go back to an earlier "draft")?
+
+	git log
+	
+8. How do you exit out of vi? (Also called vim.)
+
+	control C
+
+
+
+E2: GitHub Research
+
+1. What's the difference between GitHub and git? Could git exist without GitHub? Could GitHub exist without git?
+
+	GitHub is an online platform for git. Git could exist without GitHub but GitHub could not exist without git.
+
+2. Why is GitHub a cool company?
+
+	It is universially used and free!
+
+3. What does git push do?
+
+	The git push command is a way to "publish" a file or repository by pushing it to GitHub.
+
+4. What does git pull do? How is it different from/same as git fetch and git merge?
+
+	Git pull fetches from and integrates with another repository. Git pull is shorthand for git fetch and git mereg FETCH_HEAD.
+
+
+
+
+
+
+
+
+
+
+
+
