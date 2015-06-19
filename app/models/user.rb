@@ -4,5 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :preferences
+  has_many :categories, through: :preferences
   validates(:name, :presence => true)
 end
