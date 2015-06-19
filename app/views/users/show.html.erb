@@ -1,1 +1,10 @@
 <h1><%=@user.name%></h1>
+
+
+<ul>
+<% @user.categories.each do |category| %>
+<li>
+<%= link_to category.title, "/categories/#{category.id}" %>
+</li>
+<% end %>
+</ul>
