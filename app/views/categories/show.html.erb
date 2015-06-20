@@ -1,1 +1,6 @@
 <h1><%= @category.title %></h1>
+
+
+<% if user_signed_in? %>
+<%= link_to "Create Preference", preferences_path(:user_id => current_user.id, :category_id => @category.id), :method => :post %>
+<% end %>

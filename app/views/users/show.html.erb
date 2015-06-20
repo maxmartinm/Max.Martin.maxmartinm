@@ -2,9 +2,12 @@
 
 
 <ul>
-<% @user.categories.each do |category| %>
+<% @preferences.each do |preference| %>
 <li>
-<%= link_to category.title, "/categories/#{category.id}" %>
+<%= link_to Category.find(preference.category_id).title, "/categories/#{preference.category_id}" %>
+<%= link_to "Remove", preference, method: :delete %>
 </li>
 <% end %>
 </ul>
+
+<%= link_to "Select More Categories" , "/categories" %>
