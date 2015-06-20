@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@categories = @user.categories
 		@preferences = @user.preferences
+		@charities = @user.charities
 	end
 	def welcome
 	end

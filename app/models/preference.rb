@@ -1,4 +1,4 @@
 class Preference < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :category
+	belongs_to :users
+	belongs_to :categories
 end
