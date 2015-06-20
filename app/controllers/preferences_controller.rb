@@ -8,6 +8,7 @@ class PreferencesController < ApplicationController
 	def create
 		@preference = Preference.new(:user_id => params[:user_id], :category_id => params[:category_id])
 		@preference.save
-		redirect_to '/categories'
+		redirect_to(:back)
+		flash[:notice] = "You have added #{Category.find(@preference.category_id).title} to your preferences."
 	end
 end
