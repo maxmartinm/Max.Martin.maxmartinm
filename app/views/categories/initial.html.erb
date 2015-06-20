@@ -1,0 +1,13 @@
+<h1>Almost there! Please pick a few categories you are interested in</h1>
+
+
+<% @categories.each do |category| %>
+<%= link_to category.title, preferences_path(:user_id => current_user.id, :category_id => category.id), :method => :post %>
+<%end%>
+
+<br />
+<br />
+<%=link_to "Done!" , "/users/#{current_user.id}" %>
+
+
+<footer>Don't worry! These preferences can always be changed later</footer>
