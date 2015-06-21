@@ -1,6 +1,7 @@
 class PreferencesController < ApplicationController
 	def destroy
 		Preference.find(params[:id]).destroy
+		update_results
 		redirect_to "/users/#{current_user.id}"
 	end
 	def show
@@ -8,6 +9,7 @@ class PreferencesController < ApplicationController
 	def create
 		@preference = Preference.new(:user_id => params[:user_id], :category_id => params[:category_id])
 		if @preference.save
+			update_results
 			redirect_to(:back)
 			flash[:notice] = "You have added #{Category.find(@preference.category_id).title} to your preferences."
 		else
@@ -19,13 +21,16 @@ class PreferencesController < ApplicationController
 	protected
 
 	def update_results
-			Result.where("user_id = current_user.id").each do |result|
+			Result.where("user_id = #{current_user.id}").each do |result|
 				result.destroy
 			end
-			ordered_results = {}
+			results = {}
+			if(current_user.categories == nil)
+				return false
+			end
 			current_user.categories.each do |user_category|
 				user_category.charities.each do |charity|
-					int i = 0
+					i = 0
 					charity.categories.each do |category|
 						current_user.categories.each do |preference|
 							if category == preference
@@ -33,8 +38,9 @@ class PreferencesController < ApplicationController
 							end
 						end
 					end
-					ordered_results[charity] = i
+					results[charity] = i
 				end
 			end
+			ordered_results = results.sort_by { |charity, value| value}
 	end
 end

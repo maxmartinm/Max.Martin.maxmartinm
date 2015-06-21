@@ -1,4 +1,13 @@
 class ResultsController < ApplicationController
-	def index
+	def destroy
+		Result.find(params[:id]).destroy
+		redirect_to (:back)
+	end
+
+	def create
+		@result = Result.new(:user_id => params[:user_id], :charity_id => params[:charity_id])
+		@result.save
+		update_results
+		redirect_to(:back)
 	end
 end
