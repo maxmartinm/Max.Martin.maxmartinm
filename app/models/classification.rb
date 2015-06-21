@@ -1,4 +1,4 @@
 class Result < ActiveRecord::Base
-	belongs_to :categories
-	belongs_to :charities
+	belongs_to :category
+	belongs_to :charity
 end

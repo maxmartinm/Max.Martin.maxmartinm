@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :preferences
-  has_many :charities
+  has_many :results
+  has_many :charities, through: :results
   has_many :categories, through: :preferences
   validates(:name, :presence => true)
 end

@@ -27,8 +27,8 @@ class PreferencesController < ApplicationController
 				user_category.charities.each do |charity|
 					int i = 0
 					charity.categories.each do |category|
-						current_user.categories.each do |comparator|
-							if category == comparator
+						current_user.categories.each do |preference|
+							if category == preference
 								i += 1
 							end
 						end

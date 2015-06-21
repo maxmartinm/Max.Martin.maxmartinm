@@ -10,4 +10,12 @@
 <% end %>
 </ul>
 
+<ul>
+<% @user.charities.each do |charity| %>
+<li>
+<%= charity.title %>
+</li>
+<% end %>
+</ul>
+
 <%= link_to "Select More Categories" , "/categories" %>
