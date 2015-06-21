@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 	end
 	def show
 		@user = User.find(params[:id])
-		@categories = @user.categories
 		@preferences = @user.preferences
 		@charities = @user.charities
 	end
