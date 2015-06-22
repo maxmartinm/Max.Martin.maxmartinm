@@ -1,56 +1,34 @@
 <header class="header" data-stellar-background-ratio="0.5" id="home">
 
-    <div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation" role="navigation">
-        <div class="container">
+  <div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation" role="navigation">
+    <div class="container">
 
-            <div class="navbar-collapse collapse" id="stamp-navigation">
+      <div class="navbar-collapse collapse" id="stamp-navigation">
 
-                <ul class="nav navbar-nav navbar-left main-navigation small-text">
-                    <li><a href="#section2">About Us</a>
-                    </li>
-                    <li><a href="#section5">Services</a>
-                    </li>
-                    <li><a href="#section7">FAQs</a>
-                    </li>
-                    <li><a href="#section10">Contact</a>
-                    </li>
-                </ul>
+        <ul class="nav navbar-nav navbar-left main-navigation small-text">
+          <li><a href="#section2">About Us</a>
+          </li>
+          <li><a href="#section5">Services</a>
+          </li>
+          <li><a href="#section7">FAQs</a>
+          </li>
+          <li><a href="#section10">Contact</a>
+          </li>
+        </ul>
 
-                <ul class="nav navbar-nav navbar-right login-register small-text">
-                 <li><% if user_signed_in? %>   
-                  <%= link_to current_user.name, "/users/#{current_user.id}"%>
-                  <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
-                  <li><%=link_to 'Edit Profile', edit_user_registration_path %></li>
-                  <% else %>
+        <ul class="nav navbar-nav navbar-right login-register small-text">
+         <li><% if user_signed_in? %>   
+          <%= link_to current_user.name, "/users/#{current_user.id}"%>
+          <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+          <li><%=link_to 'Edit Profile', edit_user_registration_path %></li>
+          <% else %>
 
-                  <%= link_to 'Sign In', user_session_path %>
-                  <% end %>
-              </li>
-          </ul>
-      </div>
+          <%= link_to 'Sign In', user_session_path %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
-
-
-<div class="row">
-    <div class="col-md-7 text-left">
-
-        <div class="intro_section">
-
-            <h1 class="intro white-text">Your Money. Our Time.</h1>
-
-            <p class="transparent-text">Simply put, donating money to charity is not as easy as it should be. [INSERT NAME] attempts to create a streamlined platform for automated donations.</p>
-
-            <div class="button hidden-xs">
-                <a href="#section1" class="btn btn-primary secondary-button">Learn More</a>
-            </div>
-
-        </div>
-
-    </div>
-    <div class="col-md-5 pull-right">
-        <%= render :partial => 'devise/registrations/sign_in' %>
-    </div>
 </div>
 
 </header>

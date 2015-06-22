@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get 'users/welcome' => 'users#welcome'
   resources :users, :only => [:index, :show, :edit]
   get 'categories/initial' => 'categories#initial'
   get 'users/:id/next_update' => 'users#next_update', as: :user_next
