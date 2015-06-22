@@ -20,4 +20,10 @@ class UsersController < ApplicationController
 			redirect_to new_user_registration_path
 		end
 	end
+	def next_update
+		@user = User.find(params[:id])
+		@user.next_donation = params[:char_id]
+		@user.save
+		redirect_to :back
+	end
 end
