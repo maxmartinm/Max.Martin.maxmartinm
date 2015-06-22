@@ -1,16 +1,10 @@
 <h1><%=@user.name%></h1>
 
-<h2>Preferences</Preferences>
-<ul>
-<% @preferences.each do |preference| %>
-<li>
-<%= link_to Category.find(preference.category_id).title, "/categories/#{preference.category_id}" %>
-<%= link_to "Remove", preference, method: :delete %>
-</li>
-<% end %>
-</ul>
-<% if @results[@i.to_i] != nil %>
-<h3>Your charity for the month</h3>
+
+<% if @results == [] %>
+	<h2>You have no established preferences</h2>
+<% elsif @results[@i.to_i] != nil %>
+<h2>Your charity for the month</h2>
 <%= Charity.find(@results[@i.to_i].charity_id).name %>
 <br />
 <%= link_to "Next Charity" , user_path(:i => "#{(@i.to_i+1)}") %>
@@ -18,7 +12,24 @@
 <% else %>
 <h3>You have no more matching charities</h3>
 <%= link_to "Back to first result" , user_path(:i => "0") %>
+Or:
+<br />
+<%= link_to " Adjust Your Preferences" , "/categories" %>
 <% end %>
 <br />
 <br />
-<%= link_to "Select More Categories" , "/categories" %>
+
+<% if @results != [] %>
+	<h3>Your Preferences</h3>
+	<ul>
+	<% @preferences.each do |preference| %>
+		<li>
+		<%= link_to Category.find(preference.category_id).title, "/categories/#{preference.category_id}" %>
+		<%= link_to "Remove", preference, method: :delete %>
+		</li>
+		<%end%>
+<% else %>
+	<h3><%= link_to " Adjust Your Preferences" , "/categories" %></h3>
+<% end %>
+
+</ul>
