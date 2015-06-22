@@ -1,6 +1,6 @@
 <h1><%=@user.name%></h1>
 
-
+<h2>Preferences</Preferences>
 <ul>
 <% @preferences.each do |preference| %>
 <li>
@@ -9,13 +9,16 @@
 </li>
 <% end %>
 </ul>
-
-<ul>
-<% @user.charities.each do |charity| %>
-<li>
-<%= charity.name %>
-</li>
+<% if @results[@i.to_i] != nil %>
+<h3>Your charity for the month</h3>
+<%= Charity.find(@results[@i.to_i].charity_id).name %>
+<br />
+<%= link_to "Next Charity" , user_path(:i => "#{(@i.to_i+1)}") %>
+<br />
+<% else %>
+<h3>You have no more matching charities</h3>
+<%= link_to "Back to first result" , user_path(:i => "0") %>
 <% end %>
-</ul>
-
+<br />
+<br />
 <%= link_to "Select More Categories" , "/categories" %>
