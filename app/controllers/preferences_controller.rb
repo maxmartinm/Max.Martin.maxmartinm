@@ -25,7 +25,7 @@ class PreferencesController < ApplicationController
 				result.destroy
 			end
 			results = {}
-			if(current_user.categories == nil)
+			if(current_user.categories == [])
 				return false
 			end
 			current_user.categories.each do |user_category|
@@ -42,5 +42,18 @@ class PreferencesController < ApplicationController
 				end
 			end
 			ordered_results = results.sort_by { |charity, value| value}
+			if(ordered_results == [])
+				return false
+			end
+			reversed = ordered_results.reverse
+			resulting_charities = reversed.map do |pair|
+				pair[0]
+			end
+			resulting_charities.each do |charity|
+				r = Result.new
+				r.user_id = current_user.id
+				r.charity_id = charity.id
+				r.save
+			end
 	end
 end
