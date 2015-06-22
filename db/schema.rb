@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622131617) do
+ActiveRecord::Schema.define(version: 20150622153909) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -26,11 +26,6 @@ ActiveRecord::Schema.define(version: 20150622131617) do
   create_table "charities", force: :cascade do |t|
     t.string "name"
     t.text   "description"
-  end
-
-  create_table "charities_users", id: false, force: :cascade do |t|
-    t.integer "user_id",    null: false
-    t.integer "charity_id", null: false
   end
 
   create_table "classifications", force: :cascade do |t|
@@ -64,6 +59,8 @@ ActiveRecord::Schema.define(version: 20150622131617) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.float    "monthly_payment"
+    t.integer  "next_donation"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

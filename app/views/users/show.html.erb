@@ -4,8 +4,10 @@
 <% if @results == [] %>
 	<h2>You have no established preferences</h2>
 <% elsif @results[@i.to_i] != nil %>
-<h2>Your charity for the month</h2>
+<h2>Your matches</h2>
 <%= Charity.find(@results[@i.to_i].charity_id).name %>
+<br />
+<%= link_to "Make next month's charity" , user_next_path(:char_id => @results[@i.to_i].charity_id) %>
 <br />
 <%= link_to "Next Charity" , user_path(:i => "#{(@i.to_i+1)}") %>
 <br />
@@ -33,3 +35,9 @@ Or:
 <% end %>
 
 </ul>
+<br />
+<h4>Your charity of the month</h4>
+<% if current_user.next_donation != nil %>
+<br />
+	<%= Charity.find(current_user.next_donation).name %>
+<% end %>

@@ -7,5 +7,8 @@ class CategoriesController < ApplicationController
 	end
 	def initial
 		@categories = Category.all
+		if user_signed_in?
+			@results = current_user.results
+		end
 	end
 end
