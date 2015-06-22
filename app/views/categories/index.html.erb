@@ -2,5 +2,6 @@
 
 
 <% @categories.each do |category| %>
+	<%= image_tag category.avatar.url(:thumb) %>
 	<%= link_to category.title, "categories/#{category.id}" %>
 <% end %>
