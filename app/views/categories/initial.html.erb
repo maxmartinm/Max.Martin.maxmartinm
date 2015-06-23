@@ -1,0 +1,17 @@
+<h1>Almost there! Please pick a few categories you are interested in</h1>
+
+
+<% @categories.each do |category| %>
+<%= link_to image_tag(category.avatar), preferences_path(:user_id => current_user.id, :category_id => category.id), :method => :post %>
+<%end%>
+
+<br />
+<br />
+<% if @results == [] %>
+	<%= link_to "Done!" , user_path(:id => current_user.id) %>
+<% else %>
+	<%=link_to "Done!" , user_first_path(:char_id => @results[0].charity_id, :id => current_user.id) %>
+<% end %>
+
+
+<footer>Don't worry! These preferences can always be changed later</footer>

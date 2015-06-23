@@ -1,0 +1,62 @@
+<%= render :partial => 'usernavbar' %>
+<% if @results == [] %>
+	<h2>You have no established preferences</h2>
+<% elsif @results[@i.to_i] != nil %>
+<h2>Your matches</h2>
+<%= Charity.find(@results[@i.to_i].charity_id).name %>
+<br />
+<%= link_to "Make next month's charity" , user_next_path(:char_id => @results[@i.to_i].charity_id) %>
+<br />
+<%= link_to "Next Charity" , user_path(:i => "#{(@i.to_i+1)}") %>
+<br />
+<% else %>
+<h3>You have no more matching charities</h3>
+<%= link_to "Back to first result" , user_path(:i => "0") %>
+Or:
+<br />
+<%= link_to " Adjust Your Preferences" , "/categories" %>
+<% end %>
+<br />
+<br />
+
+<% if @results != [] %>
+	<h3>Your Preferences</h3>
+	<ul>
+	<% @preferences.each do |preference| %>
+		<li>
+		<%= link_to Category.find(preference.category_id).title, "/categories/#{preference.category_id}" %>
+		<%= link_to "Remove", preference, method: :delete %>
+		</li>
+		<%end%>
+<% else %>
+
+
+
+
+<% end %>
+
+</ul>
+<br />
+<h4>Your charity of the month</h4>
+<% if current_user.next_donation != nil %>
+<br />
+	<%= Charity.find(current_user.next_donation).name %>
+	<%= form_tag donate_charity_path do %>
+    <article>
+      <label class="amount">
+        <span>Amount: $<%= number_with_precision current_user.monthly_payment, precision: 2 %></span>
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= ENV['STRIPE_PUBLIC_KEY'] %>"
+            data-description="<%= Charity.find(current_user.next_donation).name %>"
+            data-amount="<%= (current_user.monthly_payment * 100).round %>"></script>
+  <% end %>
+<% end %>
+
+<h5>Your donation history</h5>
+<% @donation_history.each do |donation| %>
+<%= "$#{donation.amount} to #{Charity.find(donation.charity_id).name}" %>
+<br />
+<% end %>
