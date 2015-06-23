@@ -10,6 +10,8 @@
 Category.delete_all
 Classification.delete_all
 Charity.delete_all
+Preference.delete_all
+Result.delete_all
 
 Category.create([{title: 'Animals'}, {title: 'Arts, Culture, Humanities'}, {title: 'Education'}, {title: 'Environment'}, {title: 'Health'}, {title: 'Human Services'}, {title: 'International'}, {title: 'Human and Civil Rights'}, {title: 'Religion'}, {title: 'Community Developement'}, {title: 'Research and Public Policy'}])
 Charity.create([
