@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'stripe'
+
 gem 'paperclip', "~> 4.2"
 
 gem 'devise'
