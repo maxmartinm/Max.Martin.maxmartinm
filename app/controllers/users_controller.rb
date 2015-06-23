@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 		@preferences = @user.preferences
 		@charities = @user.matched_charities
 		@results = @user.results
+		@donation_history = @user.donations
 		if(params[:i] != nil)
 			@i = params[:i]
 		else
@@ -35,5 +36,12 @@ class UsersController < ApplicationController
 			@user.save
 			redirect_to user_path(:id => current_user.id)
 		end
+	end
+
+	def update_monthly
+		@user = current_user
+		@user.monthly_payment = params[:monthly]
+		@user.save
+		redirect_to user_path(:id => current_user.id)
 	end
 end
