@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 		@preferences = @user.preferences
 		@charities = @user.matched_charities
 		@results = @user.results
+		@donation_history = @user.donations
 		if(params[:i] != nil)
 			@i = params[:i]
 		else
