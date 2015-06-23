@@ -1,6 +1,4 @@
-<h1><%=@user.name%></h1>
-
-
+<%= render :partial => 'usernavbar' %>
 <% if @results == [] %>
 	<h2>You have no established preferences</h2>
 <% elsif @results[@i.to_i] != nil %>
@@ -31,7 +29,10 @@ Or:
 		</li>
 		<%end%>
 <% else %>
-	<h3><%= link_to " Adjust Your Preferences" , "/categories" %></h3>
+
+
+
+
 <% end %>
 
 </ul>
