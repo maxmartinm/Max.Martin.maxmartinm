@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   has_many :donated_charities, through: :donations, source: :donation
   has_many :categories, through: :preferences
   validates(:name, :presence => true)
+  validates(:monthly_payment, :presence => true)
+  validates(:monthly_payment, :numericality => { :greater_than_or_equal_to => 0})
 end

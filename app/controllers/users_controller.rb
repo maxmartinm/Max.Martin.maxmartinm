@@ -37,4 +37,11 @@ class UsersController < ApplicationController
 			redirect_to user_path(:id => current_user.id)
 		end
 	end
+
+	def update_monthly
+		@user = current_user
+		@user.monthly_payment = params[:monthly]
+		@user.save
+		redirect_to user_path(:id => current_user.id)
+	end
 end
