@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
 		@user = User.find(params[:id])
 		@preferences = @user.preferences
-		@charities = @user.charities
+		@charities = @user.matched_charities
 		@results = @user.results
 		if(params[:i] != nil)
 			@i = params[:i]

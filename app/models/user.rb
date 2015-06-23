@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :preferences
   has_many :results
-  has_many :charities, through: :results
+  has_many :donations
+  has_many :matched_charities, through: :results, source: :charity
+  has_many :donated_charities, through: :donations, source: :donation
   has_many :categories, through: :preferences
   validates(:name, :presence => true)
 end
