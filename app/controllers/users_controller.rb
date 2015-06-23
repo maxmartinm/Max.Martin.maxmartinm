@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 	def show
+		if (user_signed_in?) && (current_user.preferences == [])
+			redirect_to "/categories", notice: "You must pick your preferences before continuing"
+		end
+
 		@user = User.find(params[:id])
 		@preferences = @user.preferences
 		@charities = @user.charities
